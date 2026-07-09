@@ -1,0 +1,19 @@
+version: "3.9"
+# Optional: spin up a local Postgres instance for the backend.
+# After starting this, set DATABASE_URL in backend/.env to:
+#   postgresql+psycopg2://hcp_user:hcp_pass@localhost:5432/hcp_crm
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: hcp_user
+      POSTGRES_PASSWORD: hcp_pass
+      POSTGRES_DB: hcp_crm
+    ports:
+      - "5432:5432"
+    volumes:
+      - hcp_pg_data:/var/lib/postgresql/data
+
+volumes:
+  hcp_pg_data:
