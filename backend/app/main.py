@@ -1,20 +1,21 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.config import settings
 from app.database import Base, engine
-from app.routers import hcp, interactions, chat
+from app.routers import hcp, interactions, form_agent
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="AI-First CRM - HCP Module",
-    description="Log Interaction screen backend: structured form + LangGraph chat agent, powered by Groq (gemma2-9b-it).",
+    title="AI-First CRM — HCP Module",
+    description="Backend API for logging pharmaceutical field interactions with Healthcare Professionals.",
     version="1.0.0",
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # relaxed for local demo; restrict in production
+    allow_origins=[settings.FRONTEND_ORIGIN],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -22,7 +23,7 @@ app.add_middleware(
 
 app.include_router(hcp.router)
 app.include_router(interactions.router)
-app.include_router(chat.router)
+app.include_router(form_agent.router)
 
 
 @app.get("/api/health")
