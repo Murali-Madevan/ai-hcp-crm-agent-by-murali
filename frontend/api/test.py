@@ -8,7 +8,7 @@ FILE_DIR = os.path.dirname(__file__)
 BACKEND_DIR = os.path.join(FILE_DIR, '..', '..', 'backend')
 BACKEND_ABS = os.path.abspath(BACKEND_DIR)
 
-sys.path.insert(0, BACKEND_ABS)
+sys.path.insert(0, os.path.join(FILE_DIR, '..'))
 
 
 class handler(BaseHTTPRequestHandler):
