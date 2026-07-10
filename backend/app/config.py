@@ -7,7 +7,7 @@ load_dotenv()
 class Settings:
     DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./hcp_crm.db")
     FRONTEND_ORIGIN: str = os.getenv("FRONTEND_ORIGIN", "http://localhost:5173")
-    FRONTEND_ORIGIN_ALT: str = os.getenv("FRONTEND_ORIGIN_ALT", "")
+    FRONTEND_ORIGIN_ALT: str = os.getenv("FRONTEND_ORIGIN_ALT", "https://ai-hcp-crm-agent-by-murali.vercel.app")
 
 
 settings = Settings()
