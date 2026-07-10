@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/api/health", "destination": "/api/health.py" },
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}
