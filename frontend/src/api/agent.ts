@@ -1,6 +1,8 @@
 import type { InteractionFormData } from '../types'
 
-const API_BASE = '/api/agent'
+const API_BASE = import.meta.env.VITE_API_BASE_URL
+  ? `${import.meta.env.VITE_API_BASE_URL}/api/agent`
+  : '/api/agent'
 
 const SNAKE_TO_CAMEL: Record<string, keyof InteractionFormData> = {
   hcp_name: 'hcpName',
